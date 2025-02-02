@@ -172,7 +172,7 @@ app.post('/convert', (req, res) => {
         return res.status(400).json({ error: 'Invalid input. Please provide a valid number.' });
     }
     const words = numberToCurrencyWords(number);
-    // const words = numberToWords(number);
+    // const words = numberToWords(number);dddk
     res.json({ number, words });
 });
 
