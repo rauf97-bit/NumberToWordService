@@ -8,46 +8,9 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Function to convert number to words
-// function numberToWords(num) {
-//     const units = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
-//     const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
-//     const tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
-
-//     if (num === 0) return 'Zero';
-
-//     let words = '';
-
-//     if (num >= 1000) {
-//         words += units[Math.floor(num / 1000)] + ' Thousand ';
-//         num %= 1000;
-//     }
-
-//     if (num >= 100) {
-//         words += units[Math.floor(num / 100)] + ' Hundred ';
-//         num %= 100;
-//     }
-
-//     if (num >= 20) {
-//         words += tens[Math.floor(num / 10)] + ' ';
-//         num %= 10;
-//     } else if (num >= 10) {
-//         words += teens[num - 10] + ' ';
-//         num = 0;
-//     }
-
-//     if (num > 0) {
-//         words += units[num] + ' ';
-//     }
-
-//     return words.trim();
-// }
-
 function numberToCurrencyWords(amount) {
 
     if (amount === 0) return "Zero Naira";
-  
-  
   
     const belowTwenty = [
   
@@ -56,12 +19,8 @@ function numberToCurrencyWords(amount) {
       "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
   
     ];
-  
     const tens = ["Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
-  
     const thousands = ["", "Thousand", "Million", "Billion"];
-  
-  
   
     function helper(n) {
   
@@ -89,16 +48,10 @@ function numberToCurrencyWords(amount) {
   
     }
   
-  
-  
     // Convert integer part (Naira) and decimal part (Kobo)
   
     const [nairaPart, koboPart] = amount.toFixed(2).split(".");
-  
-  
-  
     let nairaWords = "";
-  
     let koboWords = "";
   
   
@@ -131,8 +84,6 @@ function numberToCurrencyWords(amount) {
   
     }
   
-  
-  
     // Process Kobo
   
     if (parseInt(koboPart, 10) > 0) {
@@ -142,9 +93,7 @@ function numberToCurrencyWords(amount) {
       koboWords = helper(kobo) + " Kobo";
   
     }
-  
-  
-  
+
     // Combine Naira and Kobo
   
     if (nairaWords && koboWords) {
