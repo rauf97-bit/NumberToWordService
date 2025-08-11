@@ -75,7 +75,7 @@ app.get('/convert', (req, res) => {
 
   // Reject if not a valid number format (integer or decimal)
   if (!/^\d+(\.\d+)?$/.test(input)) {
-    return res.status(400).json({ error: 'Invalid input. Please provide a valid number.' });
+    return res.status(400).json({ error: 'Invalid input. Please provide a valid number.', words: "Invalid number" });
   }
 
   const number = parseFloat(input);
