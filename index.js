@@ -79,7 +79,7 @@ app.get('/convert', (req, res) => {
   }
 
   const number = parseFloat(input);
-  const words = numberToCurrencyWords(number, currency);
+  const words = numberToCurrencyWords(number, currency) + ' Only';
   res.json({ number, currency, words });
 });
 
